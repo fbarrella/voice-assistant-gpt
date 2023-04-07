@@ -1,0 +1,5 @@
+gtts
+SpeechRecognition
+soundfile
+openai
+pyaudio
