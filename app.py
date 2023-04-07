@@ -64,10 +64,10 @@ while True:
         # recognize speech using Google Speech Recognition
         command = r.recognize_google(audio,language='pt-BR')
 
-        # check if the word "assistant_name" is said
+        # check if the command defined on the "assistant_name" variable is said
         if assistant_name in command.lower():
             
-            # extract the phrase that comes after the word "assistant_name"
+            # extract the phrase that comes after your command of choice
             phrase = command.lower().split(assistant_name, 1)[1].strip()
 
             # execute the function with the phrase as argument
