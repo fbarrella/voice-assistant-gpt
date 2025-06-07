@@ -1,4 +1,4 @@
-Assistente de Voz pessoal usando ChatGPT
+Assistente de Voz pessoal usando Deepseek
 ========================================
 
 Este é um projeto ainda em estágio inicial de um assistente de voz pessoal utilizando uma integração com a SDK da OpenAI, usando o modelo de inteligência Deepseek. Dentro dele é possível determinar o nome para ativação das ações, assim como a palavra ou frase determinando o desligamento da aplicação.
