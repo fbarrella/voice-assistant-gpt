@@ -6,31 +6,36 @@ import io
 import winsound
 import os
 import openai
+from dotenv import load_dotenv
 
-openai.api_key = '[OPENAI-TOKEN]'
-model_engine = 'gpt-3.5-turbo'
-assistant_name = "[ASSISTANT-CALLOUT]"
-end_assistant_command = "[ASSISTANT-DISMISS]"
+load_dotenv()
+
+client = openai.OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=os.environ.get("API_KEY"),
+)
+
+model_engine = os.environ.get("MODEL_ENGINE", "deepseek/deepseek-r1-0528:free")
+assistant_name = os.environ.get("CALLOUT", "alice")
+end_assistant_command = os.environ.get("DISMISSAL", "pode parar")
 
 def print_phrase(phrase):
     print("Q:", phrase)
 
 def fetch_response(voice_input):
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
+        extra_body={},
+        extra_headers={},
         model=model_engine,
         messages=[
             {
                 "role": "user",
-                "content": voice_input
+                "content": f"Responda de forma curta e pratica: {voice_input}",
             }
         ],
-        max_tokens=1024,
-        n=1,
-        stop=None,
-        temperature=0.7
     )
 
-    return response.get('choices', {})[0].get('message', {}).get('content', 'Não foi possivel encontrar nenhuma resposta.')
+    return response.choices[0].message.content
 
 def say_loud(phrase):
     # Generate an audio file from the user text input using gTTS
@@ -78,7 +83,7 @@ while True:
 
             answer = fetch_response(phrase)
 
-            print('A:', answer)
+            print('A:', answer.encode("utf-8"))
 
             say_loud(answer)
     except sr.UnknownValueError:

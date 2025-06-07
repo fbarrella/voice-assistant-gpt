@@ -1,14 +1,16 @@
 Assistente de Voz pessoal usando ChatGPT
 ========================================
 
-Este é um projeto ainda em estágio inicial de um assistente de voz pessoal utilizando uma integração com a API da OpenAI, usando o modelo de inteligência ChatGPT. Dentro dele é possível determinar o nome para ativação das ações, assim como a palavra ou frase determinando o desligamento da aplicação.
+Este é um projeto ainda em estágio inicial de um assistente de voz pessoal utilizando uma integração com a SDK da OpenAI, usando o modelo de inteligência Deepseek. Dentro dele é possível determinar o nome para ativação das ações, assim como a palavra ou frase determinando o desligamento da aplicação.
 
 |Nome|Tipo|Descrição|
 |----|----|---------|
-|`openai.api_key`|string|A chave secreta para interação com os serviços da OpenAI. Pode ser gerada no [console de desenvolvedor](https://platform.openai.com/account/api-keys) da empresa.|
-|`model_engine`|string|O modelo da inteligência a ser utilizado como gerador das respostas. Uma lista completa pode ser visualizada atraves da [pagina na doumentação](https://platform.openai.com/docs/models) da OpenAI|
-|`assistant_name`|string|Nome ou palavra chave a ser utilizada como comando para o assistente ouvir a interação|
-|`end_assistant_command`|string|Palavra ou frase a ser utilizada como comando para encerramento da aplicação|
+|`API_KEY`|string|A chave secreta para interação com o modelo Deepseek (deepseek/deepseek-r1-0528:free), via API do _OpenRouter.ai_. Pode ser gerada no [página do modelo](https://openrouter.ai/deepseek/deepseek-r1-0528:free/api) do site.|
+|`MODEL_ENGINE`|string|O modelo da inteligência a ser utilizado como gerador das respostas. Pode-se definir qualquer um desejado, mas no exemplo aqui usaremos o modelo free da Deepseek: **deepseek/deepseek-r1-0528:free** |
+|`CALLOUT`|string|Nome ou palavra chave a ser utilizada como comando para o assistente ouvir a interação|
+|`DISMISSAL`|string|Palavra ou frase a ser utilizada como comando para encerramento da aplicação|
+
+Basta adicionar esses parâmetros em um arquivo `.env` no projeto, com os determinados valores associados. Somente o parâmetro `API_KEY` é obrigatório, os outros são opcionais.
 
 ## Execução local
 
